@@ -1,0 +1,933 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; // box-sizing inclides padding & borders to all elements' total width & height
+  list-style: none;
+}
+
+/* CSS Variables */
+:root {
+  --color-primary: #191d2b;
+  --color-secondary: #27ae60; // Green
+  --color-white: #ffffff; // This variable is used often for the text color
+  --color-black: #000;
+  --color-grey0: #f8f8f8;
+  --color-grey1: #dbe1e8;
+  --color-grey2: #b2becd;
+  --color-grey3: #6c7983;
+  --color-grey4: #454e56;
+  --color-grey5: #2a2e35;
+  --color-grey6: #12181b;
+  --br-sm-2: 14px;
+  --box-shadow-1: 0 3px 15px rgba(116, 68, 68, 0.3); // 0 on x-axis, 3px on y-axis, 0.3 opacity
+}
+
+/* Light Mode Theme Colors */
+.light-mode {
+  --color-primary: rgb(243, 243, 243); // White for primary light mode color
+  --color-secondary: #0f7ef5; // Pink for secondary light mode color
+  --color-white: #454e56;
+  --color-black: #000;
+  --color-grey0: #f8f8f8;
+  --color-grey1: #6c7983;
+  --color-grey2: #6c7983;
+  --color-grey3: #6c7983;
+  --color-grey4: #454e56;
+  --color-grey5: #f8f8f8;
+  --color-grey6: #12181b;
+}
+
+body {
+  background-color: var(--color-primary);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem; // By default, I set size to be 1.1rem
+  color: var(--color-white); // By default, I set text to be white
+  transition: all 0.4s ease-in-out; // transition effect for HTML body, ease-in-out: slowly change property values
+}
+
+/* Style display for links & anchor tags*/
+a {
+  display: inline-block; // removes line-break after each link
+  text-decoration: none; // removes any underline for each link
+  color: inherit; // inherit the body's color
+  font-family: inherit; // inherit the body's font-family
+}
+
+header {
+  height: 100vh;
+  color: var(--color-white);
+  overflow: hidden; // Prevents scrollbar from showing up even when necessary
+}
+
+/* Style display for each section in main<>*/
+section {
+  min-height: 100vh; // height must be =< size of the screen (vh: vertical height)
+  width: 100%;
+  position: absolute; // positioned relative to the nearest positioned ancestor
+  left: 0; // left is the position pf the entire element
+  top: 0;
+  padding: 3rem 18rem; //3rem for top and bottom, 18rem for left and right
+}
+
+.section {
+  transform: translateY(-100%) scale(0); // Translates an element across the y-axis
+  transition: all 0.4s ease-in-out;
+  background-color: var(--color-primar);
+}
+
+.sec1 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec2 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec3 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec4 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec5 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+
+/* Target active class (alternates between header and sections) */
+.active {
+  display: block;
+  animation: scaleAnim 1s ease-in-out; // element gradually changes from one style to another
+  @keyframes scaleAnim {
+    // animation name: scaleAnim;
+    0% {
+      transform: translateY(-100%) scaleY(0); // positive shifts down, negative shifts up
+    }
+    100% {
+      transform: translateY(0) scaleY(1);
+    }
+  }
+}
+
+/* Controls (side-panel icon navigation) */
+.controlls {
+  position: fixed; // We want the side navigation bar to be fixed on the website.
+  z-index: 10; // z-index has the highest layer, always on top layer
+  top: 50%; // aligned 50% from the top
+  right: 3%; // aligned slightly from the right (3%)
+  display: flex; // Flexbox property for the parent flex container; enables felx content for all it direct children
+  flex-direction: column; // Establishes main-axis for flexbox, lays out items from top to bottom in a single column
+  justify-content: center; // Sets content alignment across main-axis to be center aligned
+  align-items: center; // justify-content for cross-axis; sets default behaior for laying out flex items across cross-axis
+  transform: translateY(-50%); // Center side-panel in the y-axis
+
+  /* Set styling for the active button when mouse chooses an icon*/
+  .active-btn {
+    background-color: var(
+      --color-secondary
+    ) !important; //!important adds more importance to property, overrules any other styling design
+    transition: all 0.4s ease-in-out; // add transition when active
+    i {
+      color: var(
+        --color-white
+      ) !important; // icon image changed to white when active
+    }
+  }
+
+  /* Targets all the divs with class name 'control' within parent div class */
+  .control {
+    padding: 1rem; // adds padding of 1rem to all sides of each div element
+    cursor: pointer;
+    background-color: var(--color-grey4);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; // rounds the corners of each div
+    /* Center the icons  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.7rem 0;
+    box-shadow: var(--box-shadow-1); // Adds shadow around each div element
+
+    /* Target each icon element directly */
+    i {
+      font-size: 1.2rem;
+      color: var(
+        --color-grey2
+      ); // Changes color of icon images to grey2 when inactive (not active button)
+      pointer-events: none; // The element does not react to pointer hover or clicks
+    }
+  }
+}
+
+/* Style website theme toggle*/
+.theme-btn {
+  top: 5%;
+  right: 3%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--color-grey4);
+  cursor: pointer;
+  position: fixed; // Makes it so that the theme icon never leaves or moves
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out; // Transition upon clicking is quick (0.1 seconds)
+
+  /* When user clicks on the theme icon */
+  &:active {
+    transform: translateY(-5px); // Reminder: negative values move up in CSS
+  }
+  i {
+    font-size: 1.4rem; // Set icon size
+    color: var(--color-grey2); // Set icon color to grey from default white
+    pointer-events: none; // Icon does not react to pointer events
+  }
+}
+
+/* PARENT COMPONENTS */
+/* ------------------------------------------------ */
+
+/* Style header content */
+.header-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+
+  /* Style left header content*/
+  .left-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    /* Target background shape behind cover photo */
+    .h-shape {
+      transition: all 0.4s ease-in-out;
+      width: 65%;
+      height: 100%;
+      background-color: var(--color-secondary);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1; // lays behind the image, so index value is negative
+      clip-path: polygon(
+        0 0,
+        46% 0,
+        79% 100%,
+        0% 100%
+      ); //  clipping region that sets what part of an element is shown
+    }
+
+    /* Target div<> class area named 'image', which is used to contain the actual image content. */
+    .image {
+      border-radius: var(--br-sm-2);
+      width: 68%;
+      height: 90%;
+      margin-left: 4rem;
+      background-color: var(--color-black);
+      /* Target the actual image. */
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // object-fit specifies how an <img> or <video> should be resized to fit its container
+        transition: all 0.4s ease-in-out;
+        filter: grayscale(100%); // gray filter
+        &:hover {
+          filter: grayscale(
+            0%
+          ); // turn off gray filter when mouse hovers over image
+        }
+      }
+    }
+  }
+
+  /* Style right header content*/
+  .right-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Aligns the right header along center of column (flex-direction)
+    padding-right: 18rem;
+
+    /* Style the name Sanh Nguyen */
+    .name {
+      font-size: 3rem;
+      span {
+        color: rgb(61, 103, 243);
+      }
+    }
+    /* Style the paragraph after Sanh Nguyen */
+    p {
+      margin: 1.5rem 0; // 1.5rem top & bottom, 0 for left & right
+      line-height: 2rem;
+    }
+  }
+}
+
+/* About Me section */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // fr is fraction
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+
+  /* right portion of About Me */
+  .right-about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem; // adds spacing between grid items
+
+    /* <div> element that holds the 'abt-text' <div> */
+    .about-item {
+      border-top: 1px solid var(--color-grey5);
+      border-radius: 5px;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+      &:hover {
+        cursor: default;
+        transform: translateY(-5px); // moves up 5px when hover over
+        border: 1px solid var(--color-secondary);
+        box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.32); // opacity increases to 0.32 when hovered over
+      }
+
+      /* <div> element that holds the large and small text content */
+      .abt-text {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        /* large text (numerical number of projects) */
+        .large-text {
+          font-size: 3rem;
+          font-weight: 700;
+          color: var(--color-secondary);
+        }
+
+        /* small text ('projects completed') */
+        .small-text {
+          padding-left: 3rem; // moves smaller text to the right of the big number
+          position: relative;
+          text-transform: uppercase;
+          font-size: 1.2rem;
+          color: var(--color-grey1);
+          letter-spacing: 2px;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 2rem;
+            height: 2px;
+            background-color: var(--color-grey5);
+          }
+        }
+      }
+    }
+  }
+
+  /* left portion (This is Me introduction) */
+  .left-about {
+    padding-right: 5rem; // add padding to the right of This Is Me description
+    /* Style the paragraph description under 'This Is Me' header */
+    p {
+      line-height: 2rem;
+      padding: 1rem;
+      color: var(--color-grey1);
+    }
+    /*Style the header directly*/
+    h4 {
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* Style Statistics section in About Me page */
+.about-stats {
+  padding-bottom: 4rem;
+  /* Parent <div> containing each individual progress bar */
+  .progress-bars {
+    display: grid;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); // Need to display: grid first to set column further
+    grid-gap: 2rem;
+    /*Container for skill name, progress bar, & percentage %*/
+    .progress-bar {
+      display: flex-grow;
+      flex-direction: column;
+      /* Name of skill*/
+      .prog-title {
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .progress-con {
+        display: flex;
+        align-items: center;
+      }
+      /* Progress Percentage % */
+      .prog-text {
+        color: var(--color-grey2);
+      }
+      .progress {
+        width: 100%; // Takes up width of 100% of it container <div>
+        height: 0.45rem; // Specifies height of progress bar
+        background-color: var(
+          --color-grey4
+        ); // Reponsible color of the progress bar
+        margin-left: 1rem; // applies padding between % and progress bar
+        position: relative;
+
+        /* span element responsible for filling in the actual progress percentage*/
+        span {
+          position: absolute;
+          top: 0; // start from top
+          left: 0; // progress starts from the very left inside the bar
+          height: 100%; // height of progress percentage takes up entire (100%) space of the parent <div> container
+          background-color: var(
+            --color-secondary
+          ); // green color for filling in progress percentage
+          transition: all 0.4s ease-in-out;
+          width: 60%; // Green progress fills in 60% of the entire progress bar
+        }
+        /* Do this for each and every skill / programming*/
+        .java {
+          width: 100%; // Java progress percentage
+        }
+        .html {
+          width: 100%; // HTML5 progress percentage
+        }
+        .python {
+          width: 90%; // Python progress percentage
+        }
+        .css {
+          width: 70%; // CSS progress percentage
+        }
+        .c {
+          width: 80%; // C/C++ progress percentage
+        }
+        .javascript {
+          width: 70%; // JavaScript progress percentage
+        }
+        .sql {
+          width: 50%; // SQL progress percentage
+        }
+        .angular {
+          width: 30%; // Angular 14 progress percentage
+        }
+        .nodejs .csharp {
+          width: 30%; // Node.js & C# progress percentage
+        }
+      }
+    }
+  }
+}
+
+/* Stats Title */
+.stat-title {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 3.5rem 0;
+  position: relative;
+  &::before {
+    // Add a line before the stat title for design purposes
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 40%;
+    height: 1px;
+    background-color: var(--color-grey5);
+    transform: translateX(-50%);
+  }
+}
+
+/* Career Timeline - parent <div> container  */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); // Important: Timeline is isplayed as a 2-column grid
+  grid-gap: 2rem;
+  padding-bottom: 3rem;
+  /* Individual timeline grid items */
+  .timeline-item {
+    position: relative;
+    padding-left: 3rem;
+    border-left: 1px solid var(--color-grey5); // Add a solid grey-colored border line, 1px large, to the left of item
+    /* <div> element containing icon <i> */
+    .timeline-icon {
+      position: absolute;
+      left: -25px; // move icon some space to the left of timeline item
+      top: 0;
+      background-color: var(
+        --color-secondary
+      ); // Add green background to the icon
+      width: 50px;
+      height: 50px;
+      border-radius: 50%; // rounds the border of the <div> containing the icon <i> element
+      display: flex;
+      align-items: center; // centers the icon vertically
+      justify-content: center; // centers the icon horizontally
+      /* Style the icon <i> itself*/
+      i {
+        font-size: 1.4rem;
+      }
+    }
+    /* Timeline grid item duration */
+    .timeline-duration {
+      padding: 0.2rem 0.6rem;
+      background-color: var(--color-grey5);
+      border-radius: 15px;
+      display: inline-block;
+      font-size: 0.8rem; // Set duration text smaller
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    /* Role -- Company title*/
+    h5 {
+      text-transform: uppercase;
+      padding: 1rem 0; // add 1rem padding on top and bottom of role-company title
+      font-size: 1.3rem;
+      font-weight: 600;
+      /* <span> element contains the company name */
+      span {
+        color: var(--color-grey2);
+        font-weight: 500;
+        font-size: 1.2rem; // make company name slightly smaller than the role name
+      }
+    }
+    /* Style the actual role description */
+    p {
+      color: var(--color-grey2);
+    }
+  }
+}
+
+/* Portfolio Section */
+
+/* Style the potfolio text */
+.portfolio-text {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* Potfolio Parent <div> element */
+.portfolios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // make a grid of three columns for
+  grid-gap: 2rem;
+  margin-top: 3rem;
+
+  /* Individual portfolio grid item (contains image)*/
+  .portfolio-item {
+    position: relative;
+    border-radius: 15px;
+
+    /* Style class for images in this div element */
+    img {
+      width: 100%; // Set the portfolio item's image size the exact size of its <div> container
+      height: 300px;
+      object-fit: cover; // Image keeps its aspect ratio and fills the entire width of its parent <div> container element
+      border-radius: 15px; // add round borders to image border
+    }
+    /* Hover Effect for Portfolio item (contains stuff with icons*/
+    .hover-item {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-secondary);
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 15px;
+      /* use flexbox to center items */
+      display: flex; // flex container expands items to fill AVAILABLE space
+      flex-direction: column;
+      justify-content: center; // centers content along the given main-axis (which is column)
+      align-items: center; // centers content along cross-axis (horizontally for columns)
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.4s ease-in-out;
+
+      /* Project Source Code title */
+      h3 {
+        font-size: 1.5rem;
+        color: var(--color-white);
+        margin-bottom: 1.5rem;
+      }
+
+      /* <div> container that contains anchor elements which each contain an icon */
+      .icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* Style the anchor elements that each contain an icon */
+        .icon {
+          background-color: var(
+            --color-primary
+          ); // set the background color for each icon within the portfolio item
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 1rem; // add 1rem margin between each icon
+          cursor: pointer;
+          transition: all 0.4s ease-in-out;
+
+          /* Style the actual icons in each anchor element */
+          i {
+            font-size: 1.5rem; // set the icons sizes
+            color: var(--color-white);
+            margin: 0 1rem;
+          }
+
+          /* When mouse is hovering */
+          &:hover {
+            background-color: var(
+              --color-white
+            ); // color changes to white when hovered
+            i {
+              color: var(--color-primary);
+            }
+          }
+        }
+      }
+    }
+  }
+  .portfolio-item:hover .hover-item {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/** Blogs Section **/
+
+/* Parent container for blogs (grid display*/
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-top: 3rem;
+
+  .blog {
+    position: relative;
+    background-color: var(--color-grey5);
+    border-radius: 5px; // Set round borders for the div container
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+
+    /* When hovering over a blog image */
+    &:hover {
+      box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5p);
+      transition: all 0.4s ease-in-out;
+
+      /* Target the blog's actual image */
+      img {
+        filter: grayscale(
+          0
+        ); // When hovering over the blog's image, the grayscale filter disappears
+        transform: scale(
+          1.1
+        ); // image gets larger by 10% when hovered, so it gives 'pop-out' effect
+        box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    /* Style the blog item's image OUTSIDE of the hover effect */
+    img {
+      width: 100%; // Set's image size to the entire width of its <div> container
+      height: 300px;
+      object-fit: cover;
+      border-top-left-radius: 5px; // Set image top left and right corners round
+      border-top-right-radius: 5px;
+      filter: grayscale(100%); // Grayscaled BY DEFAULT until hovered over.
+      transition: all 0.4s ease-in-out; // slow transition
+    }
+    /* Style the blog's Title and Text */
+    .blog-text {
+      // margin-top: -7px; // optional spacing between bottom of image and top of title
+      padding: 1.1rem; // Add spacing around the text
+      border-top: 8px solid var(--color-secondary); // Add a green border line between blog's image and the blog's text
+
+      /* Style the h4 header in the .blog-text div*/
+      h4 {
+        font-size: 1.5rem;
+        margin-bottom: 0.7rem; // add spacing between title and text
+        transition: all 0.4s ease-in-out;
+        cursor: pointer;
+
+        /* When hovering the <h4> element*/
+        &:hover {
+          color: var(--color-secondary); // Change to green color when hovering
+          line-height: 2rem; // Minimize line-height when hovering
+          padding-bottom: 1rem; // Add extra padding under title when hovering
+        }
+      }
+    }
+  }
+}
+
+/** Contact Section**/
+
+/* Container of left & right sections */
+.contact-content-con {
+  display: flex;
+  padding-top: 3.5rem; // add padding above contact info
+
+  .left-contact {
+    flex: 2;
+
+    /* Header that lies above the contact info */
+    h4 {
+      margin-top: 1rem;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+    /* Info pertaining to icons */
+    p {
+      margin: 1rem 0;
+      line-height: 2rem;
+    }
+
+    /* <div> that wraps around the contact-items */
+    .contact-info {
+      /* Each contact-item class holds an icon and paragraph*/
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+          margin: 0.3rem 0 !important; // Override any previous existing styling for paragraphs
+          padding: 0 !important;
+        }
+
+        /* div element that wrap around icon and text */
+        .icon {
+          display: grid;
+          grid-template-columns: 40px 1fr;
+          /* Style the icons themselves */
+          i {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem; // Sets icon size
+          }
+        }
+      }
+    }
+
+    /* Target & style each individual container for contact-icon */
+    .contact-icon {
+      display: flex;
+      margin-top: 2rem;
+      a {
+        display: flex;
+        align-items: center;
+        color: var(--color-white);
+        background-color: var(--color-grey5);
+        cursor: pointer;
+        justify-content: center;
+        width: 50px; // Set width & height of anchor background
+        height: 50px;
+        border-radius: 50%;
+        margin: 0 0.4rem;
+
+        /* On mouse hover for the social media links*/
+        &:hover {
+          background-color: var(--color-secondary);
+          i {
+            color: var(--color-primary);
+          }
+        }
+        /* Target the icons within the anchor tags*/
+        i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  .right-contact {
+    flex: 3;
+    margin-left: 3rem;
+
+    .input-control {
+      margin: 1.5rem 0; // Manage top/bottom spacing between input sections
+
+      /* Style the inputs and textarea in the form */
+      input,
+      textarea {
+        border-radius: 30px;
+        font-weight: 1000;
+        font-size: inherit;
+        font-family: inherit;
+        padding: 0.8rem 1.1rem;
+        outline: none;
+        border: none;
+        background-color: var(
+          --color-grey5
+        ); // Background color of input text block
+        width: 100%;
+        color: var(--color-white); // Input text color set to white
+        resize: none;
+      }
+    }
+
+    /* Create CSS class to add spacing between Name & Email sections */
+    .i-c-2 {
+      display: flex;
+
+      /* CSS selector to target the last child in the <div> element, which is email input form */
+      :last-child {
+        margin-left: 1.5rem; // Add a margin-left of 1.5rem to the last child, email input form */
+      }
+    }
+    /* Style the form's Submit Button */
+    .submit-btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+/** Independent components **/
+
+/* Container <di> for the Download Resume/CV button */
+.btn-con {
+  display: flex;
+  align-self: flex-start;
+}
+
+/* Submit Email Button */
+.EmailButton {
+  border-radius: 30px;
+  color: inherit;
+  background-color: var(--color-color-primary);
+  font-weight: 600;
+  padding: 0 2rem;
+  position: relative;
+  border: 1px solid var(--color-secondary); // set border effect around
+  display: flex;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  .btn-text {
+    padding: 0 2rem;
+  }
+
+  .btn-icon {
+    background-color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; // rounds the corner of download arrow
+    padding: 1rem;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%); // effect moves away from the button
+    transition: all 0.4s ease-in-out;
+    z-index: -1; // be behind the button
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-secondary);
+      transform: translateX(0);
+      transition: all 0.4s ease-in-out;
+    }
+  }
+}
+
+/* Main Download Resume Button */
+.main-btn {
+  border-radius: 30px;
+  color: inherit;
+  font-weight: 600;
+  position: relative;
+  border: 1px solid var(--color-secondary); // set border effect around Download Resume/CV button
+  display: flex;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  /* Style text inside Download Resume/CV button */
+  .btn-text {
+    padding: 0 2rem;
+  }
+  .btn-icon {
+    background-color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; // rounds the corner of download arrow
+    padding: 1rem;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%); // effect moves away from the button
+    transition: all 0.4s ease-in-out;
+    z-index: -1; // be behind the button
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-secondary);
+      transform: translateX(0);
+      transition: all 0.4s ease-in-out;
+    }
+  }
+}
+
+/* Main title for About Me section*/
+.main-title {
+  text-align: center;
+  /* Target all <h2> sections */
+  h2 {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: 700;
+
+    span {
+      color: var(--color-secondary);
+    }
+
+    /* background layer of text behind main title */
+    .bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: var(--color-grey5);
+      transition: all 0.4s ease-in-out;
+      z-index: -1;
+      transform: translate(-50%, -50%); // center something
+      font-weight: 800;
+      font-size: 4.5rem; // size of grey background text
+    }
+  }
+}
