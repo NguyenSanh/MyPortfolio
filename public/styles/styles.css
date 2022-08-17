@@ -5,6 +5,12 @@
   list-style: none;
 }
 
+html,
+body {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
 /* CSS Variables */
 :root {
   --color-primary: #191d2b;

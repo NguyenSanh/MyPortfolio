@@ -1,3 +1,12 @@
+/** Resize to mobile screen */
+const resizeOps = () => {
+  document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+};
+
+resizeOps();
+window.addEventListener("resize", resizeOps);
+
+
 const sections = document.querySelectorAll(".section");
 const sectBtns = document.querySelectorAll(".controlls"); // Parent div; container of the buttons
 const sectBtn = document.querySelectorAll(".control"); // Actual individul buttons
