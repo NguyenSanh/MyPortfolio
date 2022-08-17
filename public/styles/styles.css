@@ -253,9 +253,12 @@ section {
 .header-content .right-header .name span {
   color: rgb(61, 103, 243);
 }
-.header-content .right-header p {
+.header-content .right-header .intro {
   margin: 1.5rem 0;
   line-height: 2rem;
+}
+.header-content .right-header .intro span {
+  color: rgb(185, 201, 255);
 }
 
 /* About Me section */

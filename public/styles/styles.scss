@@ -260,9 +260,12 @@ section {
       }
     }
     /* Style the paragraph after Sanh Nguyen */
-    p {
+    .intro {
       margin: 1.5rem 0; // 1.5rem top & bottom, 0 for left & right
       line-height: 2rem;
+      span {
+        color: rgb(185, 201, 255);
+      }
     }
   }
 }
