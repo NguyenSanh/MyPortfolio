@@ -942,37 +942,35 @@ section {
   }
 }
 
-
 /** Mobile-responsivenes */
 @media only screen and (max-width: 950px) {
-  .header-content{
+  .header-content {
     display: flex;
     flex-direction: column;
-    margin: 0 30px; 
+    margin: 0 20px;
 
-  .left-header{
-    margin-bottom: 50px;
+    .left-header {
+      margin-bottom: 50px;
 
-    .image{
-      width: 50%;
-      height: 90%;
+      .image {
+        width: 68%;
+        height: 90%;
+      }
     }
 
+    .right-header {
+      width: 100%;
+
+      .name {
+        font-size: 1.5rem !important;
+        line-height: 1.5rem !important;
+      }
+
+      .intro {
+        font-size: 10px;
+        line-height: 0.75rem !important;
+        margin: 1.5rem 0;
+      }
+    }
   }
-
-  .right-header{
-    width: 100%;
-
-    .name{
-      font-size: 1.5rem !important;
-      line-height: 1.5rem !important;
-    }
-    
-    .intro {
-      font-size: 10px;
-      line-height: 0.75rem !important;
-      margin: 1.5rem 0;
-    }
-  }
- }
 }

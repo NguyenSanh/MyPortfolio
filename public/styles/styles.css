@@ -868,13 +868,13 @@ section {
   .header-content {
     display: flex;
     flex-direction: column;
-    margin: 0 30px;
+    margin: 0 20px;
   }
   .header-content .left-header {
     margin-bottom: 50px;
   }
   .header-content .left-header .image {
-    width: 50%;
+    width: 68%;
     height: 90%;
   }
   .header-content .right-header {
