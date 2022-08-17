@@ -63,7 +63,7 @@ a {
 header {
   height: 100vh;
   color: var(--color-white);
-  overflow: hidden; // Prevents scrollbar from showing up even when necessary
+  //overflow: hidden; // Prevents scrollbar from showing up even when necessary
 }
 
 /* Style display for each section in main<>*/
@@ -879,7 +879,7 @@ section {
   align-self: flex-start;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  //overflow: hidden;
 
   /* Style text inside Download Resume/CV button */
   .btn-text {
@@ -939,5 +939,47 @@ section {
       font-weight: 800;
       font-size: 4.5rem; // size of grey background text
     }
+  }
+}
+
+
+/** Make page mobile-responsive*/
+
+@media only screen and (max-width: 700px) {
+  .header-content{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0; 
+  }
+
+  .left-header{
+    margin-bottom: 50px;
+  }
+
+  .right-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+
+
+    .name{
+      font-size: 1.5rem !important;
+      line-height: 1.5rem !important;
+    }
+    
+    .intro {
+      font-size: 10px;
+      line-height: 0.75rem !important;
+      margin: 1.5rem 0;
+    }
+  }
+
+
+  /** Portfolio */
+  .portfolios {
+    display: flex;
+    flex-direction: column;
   }
 }
