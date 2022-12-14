@@ -441,7 +441,7 @@ section {
 }
 .timeline .timeline-item {
   position: relative;
-  padding-left: 3rem;
+  padding-left: 3.5rem;
   border-left: 1px solid var(--color-grey5);
   /* <div> element containing icon <i> */
   /* Timeline grid item duration */
@@ -465,8 +465,11 @@ section {
   } */
 }
 .timeline .timeline-item .timeline-icon img {
-  width: 80px;
-  height: 80px;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .timeline .timeline-item .timeline-duration {
   padding: 0.2rem 0.6rem;
