@@ -478,7 +478,9 @@ section {
       position: absolute;
       left: -40px; // move icon some space to the left of timeline item
       top: 0;
-      background-color: var(--color-secondary); // Add green background to the icon
+      background-color: var(
+        --color-secondary
+      ); // Add green background to the icon
       width: 80px;
       height: 80px;
       border-radius: 50%; // rounds the border of the <div> containing the icon <i> element
@@ -991,13 +993,13 @@ section {
     grid-template-columns: repeat(1, 1fr); // fr is fraction
     padding-top: 2rem;
     padding-bottom: 1rem;
-  
+
     /* right portion of About Me */
     .right-about {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 2rem; // adds spacing between grid items
-  
+
       /* <div> element that holds the 'abt-text' <div> */
       .about-item {
         border-top: 1px solid var(--color-grey5);
@@ -1010,20 +1012,20 @@ section {
           border: 3px solid var(--color-secondary);
           box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.32); // opacity increases to 0.32 when hovered over
         }
-  
+
         /* <div> element that holds the large and small text content */
         .abt-text {
           padding: 1.5rem;
           display: flex;
           flex-direction: column;
-  
+
           /* large text (numerical number of projects) */
           .large-text {
             font-size: 3rem;
             font-weight: 700;
             color: var(--color-secondary);
           }
-  
+
           /* small text ('projects completed') */
           .small-text {
             padding-left: 3rem; // moves smaller text to the right of the big number
@@ -1032,7 +1034,7 @@ section {
             font-size: 1.2rem;
             color: var(--color-grey1);
             letter-spacing: 2px;
-  
+
             /* Style block for the line before small text content */
             &::before {
               content: "";
