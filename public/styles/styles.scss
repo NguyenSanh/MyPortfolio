@@ -532,6 +532,7 @@ section {
 .portfolio-text {
   padding: 2rem 0;
   text-align: center;
+  font-size: 40px;
 }
 
 /* Potfolio Parent <div> element */
@@ -617,6 +618,12 @@ section {
           }
         }
       }
+      /* .item-description{
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        margin: 5px; 
+      } */
     }
   }
   .portfolio-item:hover .hover-item {

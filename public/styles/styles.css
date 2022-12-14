@@ -502,6 +502,7 @@ section {
 .portfolio-text {
   padding: 2rem 0;
   text-align: center;
+  font-size: 40px;
 }
 
 /* Potfolio Parent <div> element */
@@ -543,6 +544,12 @@ section {
   transition: all 0.4s ease-in-out;
   /* Project Source Code title */
   /* <div> container that contains anchor elements which each contain an icon */
+  /* .item-description{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin: 5px; 
+  } */
 }
 .portfolios .portfolio-item .hover-item h3 {
   font-size: 1.5rem;
