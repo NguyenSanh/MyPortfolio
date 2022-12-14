@@ -475,20 +475,22 @@ section {
     /* <div> element containing icon <i> */
     .timeline-icon {
       position: absolute;
-      left: -25px; // move icon some space to the left of timeline item
+      left: -40px; // move icon some space to the left of timeline item
       top: 0;
-      background-color: var(
-        --color-secondary
-      ); // Add green background to the icon
-      width: 50px;
-      height: 50px;
+      background-color: var(--color-secondary); // Add green background to the icon
+      width: 80px;
+      height: 80px;
       border-radius: 50%; // rounds the border of the <div> containing the icon <i> element
       display: flex;
       align-items: center; // centers the icon vertically
       justify-content: center; // centers the icon horizontally
       /* Style the icon <i> itself*/
-      i {
+      /* i {
         font-size: 1.4rem;
+      } */
+      img {
+        width: 80px; // reize and adjust image photo to fit the icon space
+        height: 80px; // reize and adjust image photo to fit the icon space
       }
     }
     /* Timeline grid item duration */
@@ -661,7 +663,7 @@ section {
       object-fit: cover;
       border-top-left-radius: 5px; // Set image top left and right corners round
       border-top-right-radius: 5px;
-      filter: grayscale(100%); // Grayscaled BY DEFAULT until hovered over.
+      filter: grayscale(100%); // Grayscaled BY DEfULT until hovered over.
       transition: all 0.4s ease-in-out; // slow transition
     }
     /* Style the blog's Title and Text */
