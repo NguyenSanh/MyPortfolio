@@ -263,7 +263,7 @@ section {
   line-height: 2rem;
 }
 .header-content .right-header .intro span {
-  color: rgb(185, 201, 255);
+  color: rgb(127, 152, 236);
 }
 
 /* About Me section */
@@ -806,6 +806,7 @@ section {
   align-self: flex-start;
   display: flex;
   align-items: center;
+  overflow: hidden;
   /* Style text inside Download Resume/CV button */
 }
 .main-btn .btn-text {

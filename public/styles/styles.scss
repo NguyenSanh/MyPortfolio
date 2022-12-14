@@ -271,7 +271,7 @@ section {
       margin: 1.5rem 0; // 1.5rem top & bottom, 0 for left & right
       line-height: 2rem;
       span {
-        color: rgb(185, 201, 255);
+        color: rgb(127, 152, 236); // light blueish
       }
     }
   }
@@ -879,7 +879,7 @@ section {
   align-self: flex-start;
   display: flex;
   align-items: center;
-  //overflow: hidden;
+  overflow: hidden;
 
   /* Style text inside Download Resume/CV button */
   .btn-text {
