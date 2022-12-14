@@ -949,6 +949,7 @@ section {
 
 /** Mobile Responsivenes & Minimized Screens*/
 @media only screen and (max-width: 1000px) {
+  // Main Page
   .header-content {
     display: flex;
     flex-direction: column;
@@ -975,6 +976,82 @@ section {
         font-size: 15px;
         line-height: 1.5rem !important;
         margin: 1rem 0;
+      }
+    }
+  }
+  .about-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); // fr is fraction
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  
+    /* right portion of About Me */
+    .right-about {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem; // adds spacing between grid items
+  
+      /* <div> element that holds the 'abt-text' <div> */
+      .about-item {
+        border-top: 1px solid var(--color-grey5);
+        border-radius: 5px;
+        transition: all 0.4s ease-in-out;
+        box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+        &:hover {
+          cursor: default;
+          transform: translateY(-5px); // moves up 5px when hover over
+          border: 3px solid var(--color-secondary);
+          box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.32); // opacity increases to 0.32 when hovered over
+        }
+  
+        /* <div> element that holds the large and small text content */
+        .abt-text {
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+  
+          /* large text (numerical number of projects) */
+          .large-text {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+          }
+  
+          /* small text ('projects completed') */
+          .small-text {
+            padding-left: 3rem; // moves smaller text to the right of the big number
+            position: relative;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            color: var(--color-grey1);
+            letter-spacing: 2px;
+  
+            /* Style block for the line before small text content */
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 15px;
+              width: 2rem;
+              height: 2px;
+              background-color: var(--color-grey3);
+            }
+          }
+        }
+      }
+    }
+    .left-about {
+      padding-right: 1rem; // add padding to the right of This Is Me description
+      /* Style the paragraph description under 'This Is Me' header */
+      p {
+        line-height: 1.5rem;
+        padding: 0.5rem;
+        color: var(--color-grey1);
+      }
+      /*Style the header directly*/
+      h4 {
+        font-size: 2rem;
+        text-transform: uppercase;
       }
     }
   }
