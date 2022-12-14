@@ -403,7 +403,7 @@ section {
   width: 70%;
 }
 .about-stats .progress-bars .progress-bar .progress .sql {
-  width: 50%;
+  width: 100%;
 }
 .about-stats .progress-bars .progress-bar .progress .angular {
   width: 30%;
