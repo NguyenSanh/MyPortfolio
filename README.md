@@ -7,6 +7,4 @@ Built entirely in HTML, SCSS, and Javascript, this personal portfolio of mine sh
 
 Visit my personal portfolio here: https://nguyensanh.github.io/MyPortfolio/
 
-Date of initial build: July 8, 2022
-
-Date of latest build: July 3, 2023
+**Date of initial build**: July 8, 2022<br>**Date of latest build**: July 3, 2023
